@@ -5,14 +5,20 @@
     <title>Vue Mastery</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
+    <!-- Import Components -->
+    <script src="./components/ProductDisplay.js"></script>
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script>
   </head>
   <body>
     <div id="app">
       <div class="nav-bar"></div>
-
+    
       <div class="cart">Cart({{ cart }})</div>
+      <product-display></product-display>
+      <product-display></product-display>
+      <product-display></product-display>
+    </div>
 
       <div class="product-display">
         <div class="product-container">
