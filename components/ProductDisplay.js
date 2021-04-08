@@ -1,4 +1,10 @@
 app.component("product-display", {
+  props: {
+    premium: {
+      type: Boolean,
+      required: true,
+    },
+  },
   template:
     /*html*/
     `<div class="product-display">
@@ -11,6 +17,7 @@ app.component("product-display", {
     
             <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
+            <p>Shipping: {{ shipping }}</p>
     
             <div 
               v-for="(variant, index) in variants" 
@@ -29,13 +36,6 @@ app.component("product-display", {
             </button>
           </div>
         </div>
-      </div>`,
-});
-app.component("product-display", {
-  template:
-    /*html*/
-    `<div class="product-display">
-        ...
       </div>`,
   data() {
     return {
@@ -61,13 +61,19 @@ app.component("product-display", {
   },
   methods: {
     addToCart() {
-      this.cart += 1;
+      this.$emit("add-to-cart");
     },
     updateVariant(index) {
       this.selectedVariant = index;
     },
   },
   computed: {
+    shipping() {
+      if (this.premium) {
+        return "Free";
+      }
+      return 2.99;
+    },
     title() {
       return this.brand + " " + this.product;
     },
